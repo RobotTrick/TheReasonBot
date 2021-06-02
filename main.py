@@ -1,5 +1,5 @@
 from pyrogram import filters
-from pyrogram.errors import ChatAdminRequired
+from pyrogram.errors import ChatAdminRequired, UserAdminInvalid
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -12,15 +12,15 @@ app = Client("the_reason")
 app.add_handler(CallbackQueryHandler(unblock, ~filters.regex("exit")))  # check msg in group
 app.add_handler(CallbackQueryHandler(exit, filters.regex("exit")))  # delete check msg
 app.add_handler(MessageHandler(private, filters.private & filters.command("my_bans")))  # check msg in private
-app.add_handler(MessageHandler(start, filters.command("start")))  # start msg
-app.add_handler(MessageHandler(help, filters.command("help")))  # help msg
+app.add_handler(MessageHandler(start, filters.command(["start", "start@"+Msg.bot_username])))  # start msg
+app.add_handler(MessageHandler(help, filters.command(["help", "help@"+Msg.bot_username])))  # help msg
 
 
 @app.on_message(filters.group & filters.command(["ban", "ban@" + Msg.bot_username]))
 def ban(app: Client, msg: Message):
     """ ban user with a reason """
 
-    if len(msg.command) < 2:
+    if len(msg.command) < 2 or (not msg.reply_to_message and len(msg.command) < 3):
         msg.reply(Msg.need_reason)
         return
 
@@ -44,6 +44,9 @@ def ban(app: Client, msg: Message):
         kick_msg = msg.chat.kick_member(user.id)
     except ChatAdminRequired:
         msg.reply(Msg.need_permissions)
+    except UserAdminInvalid:
+        msg.reply(Msg.another_admin)
+        return
 
     id_baned = save_ban(msg, app)  # save details to db
     msg.reply(Msg.ban_success.format(id_baned), reply_markup=InlineKeyboardMarkup([[

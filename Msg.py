@@ -4,16 +4,17 @@ class Msg:
     need_permissions = "יש לאפשר הרשאות לחסימת משתמשים ולמחיקת הודעות!"
     need_reason = "יש לספק סיבת חסימה. לפרטים נוספים שלחו `/help` ברובוט."
     only_admins = "פעולה זו נתונה לשימוש מנהלי הקבוצה בלבד"
-    need_id = "יש לספק מזהה (ID) משתמש. את המזהה תוכלו להשיג באמצעות הבוט XXX"
+    need_id = "יש לספק מזהה (ID) משתמש. את המזהה תוכלו להשיג באמצעות הבוט @GetTelegramIDbot"
     not_found = "לא קיים מידע על המשתמש במסד הנתונים"
     unblock_btn = "לשחרור החסימה"
-    unblock_success = "החסימה שוחררה בהצלחה. המשתמש כעת יכול להיכנס אל הקבוצה!."
+    unblock_success = "החסימה שוחררה בהצלחה. המשתמש כעת יכול להיכנס אל הקבוצה!"
     not_found_bans_for_user = "אינך חסום (בינתיים) באף קבוצה. כל הכבוד :)"
     hide_sender = "משתמש זה חסם אפשרות "
     exit_btn = "סגור הודעה"
     head_msg = "רשימת קבוצות חסומות:\n"
     ban_success = "משתמש {} הוסר בהצלחה מהקבוצה."
     add_to_group = "הוסף אותי לקבוצה"
+    another_admin = "לא ניתן להשתמש בפקודה זו על מנהלים אחרים"
 
 
 def return_reason(reason: dict) -> str:
@@ -34,11 +35,11 @@ def get_bans_for_user(reason: dict) -> str:
 
 start_msg = '''היי {} [👋](robottrick.github.io)
 
-רובוט זה מאפשר למנהלים להסיר משתמשים מהקבוצה, ולהצמיד סיבה להסרה, ע"מ שלאחר מכן שאר המנהלים יוכלו לבדוק את הפרטים על ההסרה.
+רובוט זה מאפשר למנהלים להסיר משתמשים מהקבוצה ולהצמיד סיבה להסרה על מנת שלאחר מכן שאר המנהלים בקבוצה יוכלו לבדוק את הפרטים על ההסרה.
 
-כמו כן, על ידי בוט זה תוכלו לבדוק האם שמור במאגר שלנו קבוצות שהועפתם מהם, והסיבות להעפה.
+כמו כן, על ידי בוט זה תוכלו לבדוק האם שמורות במאגר שלנו קבוצות שנחסמתם בהם ואת סיבות החסימה.
 
-לעוד פרטים ומידע על השימוש, תוכלו למצוא עם שימוש בפקודת /help.
+לפרטים נוספים ומידע על השימוש, תוכלו למצוא ע"י שליחת הפקודה /help.
 
 בוט זה נוצר ע"י [YeudaBy](t.me/m100achuzBots) && [David-Lev](davidlev.me) מצוות [רובוטריק](https://robottrick.github.io/).'''
 
