@@ -1,0 +1,13 @@
+config.ini
+
+.idea
+
+*.sqlite
+
+*.session
+*.session-journal
+
+venv
+
+__pycache__/
+*.py[cod]
