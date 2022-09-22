@@ -41,7 +41,7 @@ def ban(app: Client, msg: Message):
 
     kick_msg = None
     try:
-        kick_msg = msg.chat.kick_member(user.id)
+        kick_msg = msg.chat.ban_member(user.id)
     except ChatAdminRequired:
         msg.reply(Msg.need_permissions)
     except UserAdminInvalid:
