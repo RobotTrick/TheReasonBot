@@ -34,4 +34,4 @@ python3 main.py
 ```
 ---
 ![]()
-Created with ❤️ by [David Lev](https://davidlev.me) & [Yehuda By](https://t.me/M100achuzBots)
+Created with ❤️ by [David Lev](https://davidlev.me) & [Yehuda By](https://yeudaby.com)
